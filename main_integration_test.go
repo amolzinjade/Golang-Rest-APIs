@@ -1,3 +1,8 @@
+/*
+Created on Mon May 16 17:08:23 2022
+
+@author: amolzinjade@gmail.com
+*/
 package main
 import (
 	"testing"
@@ -11,7 +16,7 @@ func TestGetContactByEmailId(t *testing.T) {
 		t.Fatal(err)
 	}
 	q := req.URL.Query()
-	q.Add("EmailAddress", "hammad@gmail.com")
+	q.Add("EmailAddress", "amol@gmail.com")
 	req.URL.RawQuery = q.Encode()
 	rr := httptest.NewRecorder()
 	handler := http.HandlerFunc(searchByEmail)
@@ -29,7 +34,7 @@ func TestGetContactByLastName(t *testing.T) {
 		t.Fatal(err)
 	}
 	q := req.URL.Query()
-	q.Add("LastName", "Mehdi")
+	q.Add("LastName", "Zinjade")
 	req.URL.RawQuery = q.Encode()
 	rr := httptest.NewRecorder()
 	handler := http.HandlerFunc(searchByEmail)
