@@ -1,3 +1,8 @@
+/*
+Created on Mon May 16 17:08:23 2022
+
+@author: amolzinjade@gmail.com
+*/
 package main
 import (
 	"testing"
@@ -8,7 +13,7 @@ import (
 
 func TestCreateContact(t *testing.T) {
 
-	var jsonStr = []byte(`{"FirstName":"Hammad","LastName":"Mehdi","EmailAddress":"hammad@gmail.com"}`)
+	var jsonStr = []byte(`{"FirstName":"Amol","LastName":"Zinjade","EmailAddress":"amol@gmail.com"}`)
 
 	req, err := http.NewRequest("POST", "/contact", bytes.NewBuffer(jsonStr))
 	if err != nil {
@@ -46,7 +51,7 @@ func TestAllContacts(t *testing.T) {
 
 func TestUpdateContact(t *testing.T) {
 
-	var jsonStr = []byte(`{"FirstName":"Hammad","LastName":"Mehdi","EmailAddress":"hammad@gmail.com"}`)
+	var jsonStr = []byte(`{"FirstName":"Amol","LastName":"Zinjade","EmailAddress":"amol@gmail.com"}`)
 
 	req, err := http.NewRequest("PATCH", "/contacts", bytes.NewBuffer(jsonStr))
 	if err != nil {
@@ -54,7 +59,7 @@ func TestUpdateContact(t *testing.T) {
 	}
 	req.Header.Set("Content-Type", "application/json")
 	q := req.URL.Query()
-	q.Add("EmailAddress", "hammad@gmail.com")
+	q.Add("EmailAddress", "amol@gmail.com")
 	req.URL.RawQuery = q.Encode()
 	rr := httptest.NewRecorder()
 	handler := http.HandlerFunc(updateContact)
@@ -75,7 +80,7 @@ func TestDeleteEntry(t *testing.T) {
 		t.Fatal(err)
 	}
 	q := req.URL.Query()
-	q.Add("EmailAddress", "hammad@gmail.com")
+	q.Add("EmailAddress", "amol@gmail.com")
 	req.URL.RawQuery = q.Encode()
 	rr := httptest.NewRecorder()
 	handler := http.HandlerFunc(deleteContact)
